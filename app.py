@@ -1,7 +1,7 @@
 from urllib import request
 import sys
 import time
-from tqdm import tqdm
+from alive_progress import alive_bar
 
 myURL = str(input('Введите ссылку для загрузки: '))
 myFILE = '/home/pavel/Загрузки/' + str(input('Сохранить объект под именем: '))
@@ -9,8 +9,10 @@ myFILE = '/home/pavel/Загрузки/' + str(input('Сохранить объ�
 try:
     print('Start DOWNLOAD => ' + myURL)
     a = request.urlretrieve(myURL, myFILE)
-    for i in tqdm(a):
-        time.sleep(0.01)
+    with alive_bar(len(a)) as bar:
+        for i in a:
+            bar()
+            time.sleep(1)
     print('DOWNLOAD complete!')
 
 except Exception:
