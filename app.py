@@ -2,12 +2,14 @@ from urllib import request
 import sys
 import time
 from alive_progress import alive_bar
+from datatime import DataTime
+
 
 myURL = str(input('Введите ссылку для загрузки: '))
-myFILE = '/home/pavel/Загрузки/' + str(input('Сохранить объект под именем: '))
+myFILE = '/home/pavel/Загрузки/' + str(input('Сохранить как: '))
 
 try:
-    print('Start DOWNLOAD => ' + myURL)
+    print(DataTime(),'Start DOWNLOAD => ' + myURL)
     a = request.urlretrieve(myURL, myFILE)
     with alive_bar(len(a)) as bar:
         for i in a:
