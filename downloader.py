@@ -1,6 +1,6 @@
-from urllib import request
 import sys
 import time
+from urllib import request
 from alive_progress import alive_bar
 from datatime import DataTime
 
